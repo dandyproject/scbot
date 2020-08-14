@@ -75,7 +75,7 @@ async function msgHandler (client, message) {
         const { id, pushname } = sender
         const { name } = chat
         const time = moment(t * 1000).format('DD/MM HH:mm:ss')
-        const commands = ['Stiker', 'stiker', 'STIKER', '#stiker', '#sticker', 'Sticker', 'setiker', 'sticker',  'Support', 'Info','Covid','Join','Lirik','Quotemaker','Menu','Owner','Hai','halo','Meme','Add','Kick','Kontak','Promote','Demote','Admin','LinkGrup','RevLinkGrup','Seasonal anime','P','Weather','Thank you','Grup bot', 'Mysteri Video', 'Join','Assalamualaikum','quote','quotes','Quote','Mystery Video','Pokemon','Bot','Kamu bot?','dfb','ytmp3','bot']
+        const commands = ['Stiker', 'stiker', 'STIKER', '#stiker', '#sticker', 'Sticker', 'setiker', 'sticker',  'Support', 'Info','Covid','Join','Lirik','Quotemaker','Menu','Owner','Hai','halo','#Stiker','Add','Kick','Kontak','Promote','Demote','Admin','LinkGrup','RevLinkGrup','Seasonal anime','P','Weather','Thank you','Grup bot', 'Mysteri Video', 'Join','Assalamualaikum','quote','quotes','Quote','Mystery Video','Pokemon','Bot','Kamu bot?','dfb','ytmp3','bot','#Sticker']
         const cmds = commands.map(x => x + '\\b').join('|')
         const cmd = type === 'chat' ? body.match(new RegExp(cmds, 'gi')) : type === 'image' && caption ? caption.match(new RegExp(cmds, 'gi')) : ''
 
@@ -92,6 +92,8 @@ async function msgHandler (client, message) {
                 case '#stiker':
                 case 'Sticker':
                 case 'setiker':
+                case '#Stiker':
+                case '#Sticker':
                     if (isMedia) {
                         const mediaData = await decryptMedia(message)
                         const imageBase64 = `data:${mimetype};base64,${mediaData.toString('base64')}`
